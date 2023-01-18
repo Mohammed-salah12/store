@@ -39,32 +39,33 @@ class ProductController extends Controller
    $valedetor=validator(request()->all([
     'name_product'=>'required|string'
    ]));
-   if(! $valedetor->fails() ){
-    $products= new Product();
-    $products->img=$request->get('img');
-    $products->name_product=$request->get('name_product');
-    $products->price_product=$request->get('price_product');
-    $IsSaved=$products->save();
-    if($IsSaved){
-
+    if(! $valedetor->fails() ){
+        $products= new Product();
+        // $products->img=$request->get('img');
+        $products->name_product=  $request->get('name_product');
+        $products->price_product= $request->get('price_product');
         $IsSaved=$products->save();
-        return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
-    }
 
+        if($IsSaved){
 
+            $IsSaved=$products->save();
+            return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
+        }
 
+        return ['redirect' => route('products.index')];
 
+        if (request()->hasFile('image')) {
+
+            $image = $request->file('image');
+
+            $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+
+            $image->move('storage/images/products', $imageName);
+
+            $products->image = $imageName;
+            }
    }
-  if (request()->hasFile('image')) {
 
-                    $image = $request->file('image');
-
-                    $imageName = time() . 'image.' . $image->getClientOriginalExtension();
-
-                    $image->move('storage/images/products', $imageName);
-
-                    $products->image = $imageName;
-                    }
 
     }
 
@@ -87,7 +88,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $products = Product::all();
+        $products = Product::findOrFail($id);
         return response()->view('cms.products.edit' , compact('products'));
     }
 

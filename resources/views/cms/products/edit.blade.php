@@ -32,7 +32,7 @@
 
                 <div class="form-group col-md-6">
                   <label for="name_product">titel of seeders</label>
-                  <input type="text" class="form-control" id="name_product" name="name_product" placeholder="titelt  of outhers" value="{{ $products->name_product }}">
+                  <input type="text" class="form-control" id="name_product" name="name_product" value="{{ $products->name_product}}" placeholder="titelt  of outhers" >
                 </div>
 
                 <div class="form-group col-md-6">
@@ -52,7 +52,7 @@
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <button type="button" onclick="performUpdate({{$products->id}})" class="btn btn-primary">Store</button>
+              <button type="button" onclick="performUpdate({{$products->id}})" class="btn btn-primary">Update</button>
                 <a href="{{ route('products.index') }}" type="button" class="btn btn-info">Return Back</a>
 
               </div>
@@ -73,16 +73,18 @@
 
 @endsection
 @section('scripts')
-  <script>
-    function performUpdate(){
+<script>
+    function performUpdate(id){
 
-      let formData = new FormData(id);
+      let formData = new FormData();
       formData.append('name_product',document.getElementById('name_product').value);
       formData.append('price_product',document.getElementById('price_product').value);
       formData.append('image',document.getElementById('image').value);
 
-      store('/cms/product/update-products/'+id , formData);
+      storeRoute('/cms/product/update-products/'+id , formData);
     }
 
   </script>
 @endsection
+
+
