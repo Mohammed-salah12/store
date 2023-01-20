@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WebContactController;
@@ -26,7 +27,12 @@ Route::prefix('/cms/product/')->group(function () {
     Route::resource('products' , ProductController::class);
     Route::post('update-products/{id}' , [ProductController::class , 'update'])->name('update-products');
 
+
     Route::resource('contacts' , ContactController::class);
     Route::post('update-contacts/{id}' , [ContactController::class , 'update'])->name('update-contacts');
+
+
+    Route::resource('admins' , AdminController::class);
+    Route::post('update-admins/{id}' , [AdminController::class , 'update'])->name('update-admins');
 });
 
