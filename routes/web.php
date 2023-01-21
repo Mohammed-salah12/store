@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserAuthConroller;
 use App\Http\Controllers\WebContactController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('/cms/product/')->group(function () {
+Route:Route::prefix('cms/')->middleware('guest:admin')->group(function () {
+    Route::get('{guard}/login' , [UserAuthConroller::class , 'showlogin']);
+    Route::post('{guard}/login' , [UserAuthConroller::class , 'login']);
+ });
+
+
+Route::prefix('/cms/product/')->middleware('auth:admin')->group(function () {
     Route::view('parantt','cms.parent');
     Route::resource('products' , ProductController::class);
     Route::post('update-products/{id}' , [ProductController::class , 'update'])->name('update-products');
