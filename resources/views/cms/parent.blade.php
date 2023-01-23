@@ -302,7 +302,29 @@
                     <i class="fas fa-list-ul"></i>
                     <p>create</p>
                   </a>
-                </li>s
+                </li>
+                          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-user"></i>
+               <i class="far fa-user"></i>
+              <p>
+                category
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('categories.index')}}" class="nav-link">
+                  <i class="fas fa-list-ul nav-icon"></i>
+                  <i class="fas fa-list-ul"></i>
+                  <p>Index</p>
+                </a>
+                <a href="{{route('categories.create')}}" class="nav-link">
+                    <i class="fas fa-list-ul nav-icon"></i>
+                    <i class="fas fa-list-ul"></i>
+                    <p>create</p>
+                  </a>
+                </li>
               </li>
 
                 </a>
