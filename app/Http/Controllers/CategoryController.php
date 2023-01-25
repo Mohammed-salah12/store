@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Product;
+
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-   $products=Product::orderBy('id','desc')->paginate(5);
-    return response()->view('cms.products.index',compact('products'));
+   $categories=Category::orderBy('id','desc')->paginate(5);
+    return response()->view('cms.categories.index',compact('categories'));
     }
 
     /**
@@ -24,8 +25,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $products=Product::all();
-        return response()->view('cms.products.create', compact('products'));
+        $categories=Category::all();
+        return response()->view('cms.categories.create', compact('categories'));
     }
 
     /**
@@ -37,33 +38,21 @@ class ProductController extends Controller
     public function store(Request $request)
     {
    $valedetor=validator(request()->all([
-    'name_product'=>'required|string'
+    'name'=>'required|string'
    ]));
     if(! $valedetor->fails() ){
-        $products= new Product();
-        // $products->img=$request->get('img');
-        $products->name_product=  $request->get('name_product');
-        $products->price_product= $request->get('price_product');
-        if (request()->hasFile('img')) {
-
-            $img = $request->file('img');
-
-            $imageName = time() . 'img.' . $img->getClientOriginalExtension();
-
-            $img->move('storage/images/products', $imageName);
-
-            $products->img = $imageName;
-            }
-        $IsSaved=$products->save();
+        $categories= new Category();
+        $categories->name=  $request->get('name');
+        $categories->descrpition= $request->get('descrpition');
+        $IsSaved=$categories->save();
 
         if($IsSaved){
 
-            $IsSaved=$products->save();
+            $IsSaved=$categories->save();
             return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
         }
 
-        return ['redirect' => route('products.index')];
-
+        return ['redirect' => route('categories.index')];
 
    }
 
@@ -89,8 +78,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $products = Product::findOrFail($id);
-        return response()->view('cms.products.edit' , compact('products'));
+        $categories = Category::findOrFail($id);
+        return response()->view('cms.categories.edit' , compact('categories'));
     }
 
     /**
@@ -103,28 +92,18 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator($request->all() , [
-            'name_product' => 'required|string|',
+            'name' => 'required|string|',
         ]);
 
         if (! $validator->fails()){
 
-            $products = Product::findOrFail($id);
-            $products->name_product = $request->get('name_product');
-            $products->price_product = $request->get('price_product');
-            $isUpdated = $products->save();
+            $categories = Category::findOrFail($id);
+            $categories->name = $request->get('name');
+            $categories->descrpition = $request->get('descrpition');
+            $isUpdated = $categories->save();
 
-            if (request()->hasFile('img')) {
 
-                $img = $request->file('img');
-
-                $imageName = time() . 'img.' . $img->getClientOriginalExtension();
-
-                $img->move('storage/images/products', $imageName);
-
-                $products->img = $imageName;
-                }
-
-            return ['redirect' => route('products.index')];
+            return ['redirect' => route('categories.index')];
             if($isUpdated){
                 return response()->json(['icon' => 'success' , 'title' => 'Updated is Successfully'] , 200);
             }
@@ -145,5 +124,5 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $products = Product::destroy($id);    }
+        $categories = Category::destroy($id);    }
 }

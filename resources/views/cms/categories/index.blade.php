@@ -1,3 +1,4 @@
+
 @extends('cms.parent')
 
 @section('title' , ' Admin')
@@ -39,7 +40,7 @@
             <div class="card">
               <div class="card-header">
                 {{-- <h3 class="card-title"> Index Data of Admin</h3> --}}
-                <a href="{{ route('products.create') }}" type="button" class="btn btn-info">Add New Product</a>
+                <a href="{{ route('categories.create') }}" type="button" class="btn btn-info">Add New Admin</a>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -58,31 +59,28 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>img</th>
-                      <th>name_product </th>
-                      <th>price_product</th>
+                      <th>ID</th>
+                      <th>name</th>
+                      <th>discription</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($products as $produt )
-                    {{-- <td><span class="tag tag-success">Approved</span></td> --}}
-
+                    @foreach ($categories as $category)
                     <tr>
-                        <td>
-                            <img class="img-circle img-bordered-sm" src="{{asset('storage/images/products/'.$produt->img)}}" width="60" height="60" alt="User Image">
-                         </td>
-                        <td>{{$produt->name_product}}</td>
-                        <td>{{ $produt->price_product }}</td>
+                        <td>{{$category->id}}</td>
+
+                        <td>{{$category->name ?? ""}}</td>
+                        <td>{{$category->descrpition ?? ""}}</td>
 
 
 
                         <td>
                             <div class="btn group">
-                              <a href="{{route('products.edit' , $produt->id)}}" type="button" class="btn btn-info">
+                              <a href="{{route('categories.edit' , $category->id)}}" type="button" class="btn btn-info">
                                 <i class="fas fa-edit"></i>
                                 {{-- <i class="far fa-edit"></i> --}}
                               </a>
-                              <a href="#" type="button" onclick="performDestroy({{ $produt->id }} , this)" class="btn btn-danger">
+                              <a href="#" type="button" onclick="performDestroy({{ $category->id }} , this)" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                               </a>
 
@@ -100,7 +98,7 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            {{ $products->links()}}
+            {{ $categories->links()}}
           </div>
         </div>
 
@@ -115,7 +113,7 @@
 @section('scripts')
   <script>
     function performDestroy(id , referance){
-      let url = '/cms/product/products/'+id;
+      let url = '/cms/product/categories/'+id;
       confirmDestroy(url , referance );
     }
 </script>

@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+<<<<<<< HEAD
 use App\Http\Controllers\AuthController;
+=======
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+>>>>>>> efe813d177035bc008aa2f01a85493e9575950ce
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserAuthConroller;
@@ -49,5 +54,15 @@ Route::prefix('/cms/product/')->middleware('auth:admin')->group(function () {
 
     Route::resource('admins' , AdminController::class);
     Route::post('update-admins/{id}' , [AdminController::class , 'update'])->name('update-admins');
+
+    Route::resource('categories' , CategoryController::class);
+
+    Route::post('update-categories/{id}' , [CategoryController::class , 'update'])->name('update-categories');
+
+
+    Route::resource('comments' , CommentController::class);
+    Route::post('update-comments/{id}' , [CommentController::class , 'update'])->name('update-comments');
+
+
 });
 

@@ -225,33 +225,9 @@
 
 
           <li class="nav-header">User Mangment </li>
+
+
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-user"></i>
-              {{-- <i class="far fa-user"></i> --}}
-              <p>
-                product
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('products.index')}}" class="nav-link">
-                  <i class="fas fa-list-ul nav-icon"></i>
-                  {{-- <i class="fas fa-list-ul"></i> --}}
-                  <p>Index</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('products.create')}}" class="nav-link">
-                  {{-- <i class="fas fa-plus nav-icon"></i> --}}
-                  <i class="fa-sharp fa-solid fa-folder-plus"></i>
-                  {{-- <i class="fas fa-plus"></i> --}}
-                  <p>Create</p>
-                </a>
-              </li>
-            </ul>
-          </li> <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-user"></i>
               {{-- <i class="far fa-user"></i> --}}
@@ -278,40 +254,139 @@
               </li>
             </ul>
           </li>
-
-
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fab fa-product-hunt"></i>
+                                              {{-- <i class="far fa-user"></i> --}}
+              <p>
+                product
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('products.index')}}" class="nav-link">
+                  <i class="fas fa-list-ul nav-icon"></i>
+                  {{-- <i class="fas fa-list-ul"></i> --}}
+                  <p>Index</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('products.create')}}" class="nav-link">
+                  {{-- <i class="fas fa-plus nav-icon"></i> --}}
+                  <i class="fa-sharp fa-solid fa-folder-plus"></i>
+                  {{-- <i class="fas fa-plus"></i> --}}
+                  <p>Create</p>
+                </a>
+              </li>
+            </ul>
+          </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-user"></i>
-               <i class="far fa-user"></i>
+
+              <p>
+                comment
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('comments.index')}}" class="nav-link">
+                  <i class="fas fa-list-ul nav-icon"></i>
+                  {{-- <i class="fas fa-list-ul"></i> --}}
+                  <p>Index</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('comments.create')}}" class="nav-link">
+                  {{-- <i class="fas fa-plus nav-icon"></i> --}}
+                  <i class="fa-sharp fa-solid fa-folder-plus"></i>
+                  {{-- <i class="fas fa-plus"></i> --}}
+                  <p>Create</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fas fa-id-card"></i>
+                                              {{-- <i class="far fa-user"></i> --}}
               <p>
                 contact
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-             <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('contacts.index')}}" class="nav-link">
                   <i class="fas fa-list-ul nav-icon"></i>
-                  <i class="fas fa-list-ul"></i>
+                  {{-- <i class="fas fa-list-ul"></i> --}}
                   <p>Index</p>
                 </a>
-                <a href="{{route('contacts.create')}}" class="nav-link">
-                    <i class="fas fa-list-ul nav-icon"></i>
-                    <i class="fas fa-list-ul"></i>
-                    <p>create</p>
-                  </a>
-                </li>s
               </li>
-
+              <li class="nav-item">
+                <a href="{{route('contacts.create')}}" class="nav-link">
+                  {{-- <i class="fas fa-plus nav-icon"></i> --}}
+                  <i class="fa-sharp fa-solid fa-folder-plus"></i>
+                  {{-- <i class="fas fa-plus"></i> --}}
+                  <p>Create</p>
                 </a>
               </li>
+            </ul>
+          </li>
+
+
+
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-table"></i>
+              {{-- <i class="far fa-user"></i> --}}
+              <p>
+                category
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('categories.index')}}" class="nav-link">
+                  <i class="fas fa-list-ul nav-icon"></i>
+                  {{-- <i class="fas fa-list-ul"></i> --}}
+                  <p>Index</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('categories.create')}}" class="nav-link">
+                  {{-- <i class="fas fa-plus nav-icon"></i> --}}
+                  <i class="fa-sharp fa-solid fa-folder-plus"></i>
+                  {{-- <i class="fas fa-plus"></i> --}}
+                  <p>Create</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+
+                          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-gear"></i>
+
+              <p>
+                Setting
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+             <ul class="nav nav-treeview">
+
 
 
 
           {{-- <i class="fa-solid fa-gear"></i> --}}
-          <li class="nav-header">Setting</li>
+          <li class="nav-header"></li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               {{-- <i class="fas fa-user-edit nav-icon"></i> --}}
