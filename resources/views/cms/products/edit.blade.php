@@ -40,8 +40,8 @@
                   <input type="text" class="form-control" id="price_product" name="price_product" placeholder="descreption of outhers" value="{{ $products->price_product }}">
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="image">address of seeders</label>
-                    <input type="file" class="form-control" id="image" name="image" placeholder="Enter Date of outhers" value="{{$products->img}}">
+                    <label for="img">address of seeders</label>
+                    <input type="file" class="form-control"id=" img" name="img" placeholder="Enter Date of outhers" >
                   </div>
                    </div>
               </div>
@@ -79,7 +79,7 @@
       let formData = new FormData();
       formData.append('name_product',document.getElementById('name_product').value);
       formData.append('price_product',document.getElementById('price_product').value);
-      formData.append('image',document.getElementById('image').value);
+      formData.append('img',document.getElementById('img').value);
 
       storeRoute('/cms/product/update-products/'+id , formData);
     }

@@ -11,23 +11,6 @@
 @endsection
 
 @section('content')
-{{-- <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Simple Tables</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Simple Tables</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section> --}}
 
     <!-- Main content -->
     <section class="content">
@@ -39,7 +22,7 @@
             <div class="card">
               <div class="card-header">
                 {{-- <h3 class="card-title"> Index Data of Admin</h3> --}}
-                <a href="{{ route('products.create') }}" type="button" class="btn btn-info">Add New Product</a>
+
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -58,31 +41,33 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>img</th>
-                      <th>name_product </th>
-                      <th>price_product</th>
+                      <th>id</th>
+                      <th>img </th>
+                      <th>name </th>
+                      <th>comment</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($products as $produt )
+                    @foreach ($comments as $comment )
                     {{-- <td><span class="tag tag-success">Approved</span></td> --}}
 
                     <tr>
-                        <td>
-                            <img class="img-circle img-bordered-sm" src="{{asset('storage/images/products/'.$produt->img)}}" width="60" height="60" alt="User Image">
+                         <td>{{$comment->id}}</td>
+                         <td>
+                            <img class="img-circle img-bordered-sm" src="{{asset('storage/images/Comment/'.$comment->img)}}" width="60" height="60" alt="User img">
                          </td>
-                        <td>{{$produt->name_product}}</td>
-                        <td>{{ $produt->price_product }}</td>
+                        <td>{{$comment->name}}</td>
+                        <td>{{ $comment->comment }}</td>
 
 
 
                         <td>
                             <div class="btn group">
-                              <a href="{{route('products.edit' , $produt->id)}}" type="button" class="btn btn-info">
-                                <i class="fas fa-edit"></i>
-                                {{-- <i class="far fa-edit"></i> --}}
+                             <div class="btn group">
+                                    <a href="{{route('comments.edit' , $comment->id)}}" type="button" class="btn btn-info">
+                                      <i class="fas fa-edit"></i>
                               </a>
-                              <a href="#" type="button" onclick="performDestroy({{ $produt->id }} , this)" class="btn btn-danger">
+                              <a href="#" type="button" onclick="performDestroy({{ $comment->id }} , this)" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                               </a>
 
@@ -100,7 +85,7 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            {{ $products->links()}}
+            {{ $comments->links()}}
           </div>
         </div>
 
@@ -115,7 +100,7 @@
 @section('scripts')
   <script>
     function performDestroy(id , referance){
-      let url = '/cms/product/products/'+id;
+      let url = '/cms/product/comments/'+id;
       confirmDestroy(url , referance );
     }
 </script>

@@ -44,6 +44,16 @@ class ProductController extends Controller
         // $products->img=$request->get('img');
         $products->name_product=  $request->get('name_product');
         $products->price_product= $request->get('price_product');
+        if (request()->hasFile('img')) {
+
+            $img = $request->file('img');
+
+            $imageName = time() . 'img.' . $img->getClientOriginalExtension();
+
+            $img->move('storage/images/products', $imageName);
+
+            $products->img = $imageName;
+            }
         $IsSaved=$products->save();
 
         if($IsSaved){
@@ -54,16 +64,7 @@ class ProductController extends Controller
 
         return ['redirect' => route('products.index')];
 
-        if (request()->hasFile('image')) {
 
-            $image = $request->file('image');
-
-            $imageName = time() . 'image.' . $image->getClientOriginalExtension();
-
-            $image->move('storage/images/products', $imageName);
-
-            $products->image = $imageName;
-            }
    }
 
 
@@ -112,15 +113,15 @@ class ProductController extends Controller
             $products->price_product = $request->get('price_product');
             $isUpdated = $products->save();
 
-            if (request()->hasFile('image')) {
+            if (request()->hasFile('img')) {
 
-                $image = $request->file('image');
+                $img = $request->file('img');
 
-                $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+                $imageName = time() . 'img.' . $img->getClientOriginalExtension();
 
-                $image->move('storage/images/products', $imageName);
+                $img->move('storage/images/products', $imageName);
 
-                $products->image = $imageName;
+                $products->img = $imageName;
                 }
 
             return ['redirect' => route('products.index')];

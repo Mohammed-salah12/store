@@ -73,15 +73,15 @@
 
                  <div class="row">
                   <div class="form-group col-md-12">
-                  <label for="image">Image of Admin</label>
-                  <input type="file" class="form-control" id="image" name="image" placeholder="Enter Date of Admin">
+                  <label for="img">Image of Admin</label>
+                  <input type="file" class="form-control" id="img" name="img" placeholder="Enter Date of Admin">
                 </div>
                  </div>
 
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <button type="button" onclick="performUpdate({{$admins->id}})" class="btn btn-primary">Store</button>
+                <button type="button" onclick="performUpdate({{$admins->id}})" class="btn btn-primary">update</button>
                 <a href="{{ route('admins.index') }}" type="button" class="btn btn-info">Return Back</a>
 
               </div>
@@ -112,7 +112,7 @@
       formData.append('last_name',document.getElementById('last_name').value);
       formData.append('email',document.getElementById('email').value);
       formData.append('mobile',document.getElementById('mobile').value);
-      formData.append('image',document.getElementById('image').files[0]);
+      formData.append('img',document.getElementById('img').files[0]);
 
       storeRoute('/cms/product/update-admins/'+id , formData);
     }

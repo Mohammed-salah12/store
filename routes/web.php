@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WebContactController;
@@ -37,6 +38,13 @@ Route::prefix('/cms/product/')->group(function () {
     Route::post('update-admins/{id}' , [AdminController::class , 'update'])->name('update-admins');
 
     Route::resource('categories' , CategoryController::class);
+
     Route::post('update-categories/{id}' , [CategoryController::class , 'update'])->name('update-categories');
+
+
+    Route::resource('comments' , CommentController::class);
+    Route::post('update-comments/{id}' , [CommentController::class , 'update'])->name('update-comments');
+
+
 });
 

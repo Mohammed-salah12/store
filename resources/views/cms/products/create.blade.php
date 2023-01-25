@@ -40,8 +40,8 @@
               </div>
 
               <div class="form-group col-md-12">
-                <label for="image">Image of Author</label>
-                <input type="file" class="form-control" id="image" name="image" placeholder="Enter Date of Author">
+                <label for="img">Image of Author</label>
+                <input type="file" class="form-control" id="img" name="img" placeholder="Enter Date of Author">
               </div>
                </div>
 
@@ -76,7 +76,7 @@
       let formData = new FormData();
       formData.append('name_product',document.getElementById('name_product').value);
       formData.append('price_product',document.getElementById('price_product').value);
-      formData.append('image',document.getElementById('image').files[0]);
+      formData.append('img',document.getElementById('img').files[0]);
       store('/cms/product/products' , formData);
     }
 

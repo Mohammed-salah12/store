@@ -68,8 +68,8 @@
                  <div class="row">
 
                   <div class="form-group col-md-12">
-                  <label for="image">Image of Admin</label>
-                  <input type="file" class="form-control" id="image" name="image" placeholder="Enter Date of Admin">
+                  <label for="img">Image of Admin</label>
+                  <input type="file" class="form-control" id="img" name="img" placeholder="Enter Date of Admin">
                 </div>
                  </div>
 
@@ -108,7 +108,7 @@
       formData.append('email',document.getElementById('email').value);
       formData.append('password',document.getElementById('password').value);
       formData.append('mobile',document.getElementById('mobile').value);
-      formData.append('image',document.getElementById('image').files[0]);
+      formData.append('img',document.getElementById('img').files[0]);
 
 
       store('/cms/product/admins' , formData);

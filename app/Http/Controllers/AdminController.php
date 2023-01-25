@@ -44,6 +44,16 @@ class AdminController extends Controller
    ]));
    if(! $valedetor->fails() ){
     $admins= new Admin();
+    if (request()->hasFile('img')) {
+
+        $img = $request ->file('img');
+
+        $imgName = time() . 'img.' . $img->getClientOriginalExtension();
+
+        $img->move('storage/images/admin', $imgName);
+
+        $admins->img = $imgName;
+    }
     $admins->email=$request->get('email');
     $admins->password=Hash::make($request->get('password'));
     $IsSaved=$admins->save();
@@ -104,25 +114,15 @@ class AdminController extends Controller
             $isSaved = $admins->save();
 
             if($isSaved){
-                $users = $admins->user;
+                $admins = $admins->user;
 
-                if (request()->hasFile('image')) {
 
-                    $image = $request->file('image');
+                $admins->first_name = $request->get('first_name');
+                $admins->last_name = $request->get('last_name');
+                $admins->mobile = $request->get('mobile');
+                $admins->actor()->associate($admins);
 
-                    $imageName = time() . 'image.' . $image->getClientOriginalExtension();
-
-                    $image->move('storage/images/admin', $imageName);
-
-                    $users->image = $imageName;
-                    }
-
-                $users->first_name = $request->get('first_name');
-                $users->last_name = $request->get('last_name');
-                $users->mobile = $request->get('mobile');
-                $users->actor()->associate($admins);
-
-                $isSaved = $users->save();
+                $isSaved = $admins->save();
 
                 return ['redirect'=>route('admins.index')];
 
