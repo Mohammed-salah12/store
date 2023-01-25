@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserAuthConroller;
+use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\WebContactController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +26,15 @@ Route::get('/', function () {
 });
 
 Route:Route::prefix('cms/')->middleware('guest:admin')->group(function () {
-    Route::get('{guard}/login' , [UserAuthConroller::class , 'showlogin']);
+    // Route::get('{guard}/login' , [UserAuth\Controller::class , 'showlogin'])->name('view.login');
+    Route::get('{guard}/login' , [UserAuthConroller::class , 'showlogin'])->name('view.login');
     Route::post('{guard}/login' , [UserAuthConroller::class , 'login']);
  });
+
+
+ Route::prefix('cms/admin/')->middleware('auth:admin')->group(function(){
+    Route::get('logout' , [UserAuthConroller::class , 'logout'] )->name('view.test');
+});
 
 
 Route::prefix('/cms/product/')->middleware('auth:admin')->group(function () {

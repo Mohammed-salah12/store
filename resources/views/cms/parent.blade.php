@@ -330,7 +330,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('view.test') }}" class="nav-link">
               <i class="far fa-sign-out nav-icon"></i>
               {{-- <i class="fas fa-sign-out"></i> --}}
               <p>Logout</p>

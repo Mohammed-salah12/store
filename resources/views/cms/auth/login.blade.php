@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -31,7 +31,7 @@
 
       <form>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email" id="email" name="email">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" >
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" >
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
+        <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
@@ -55,9 +55,9 @@
               </label>
             </div>
           </div>
-          <!-- /.col -->
+            <!-- /.col -->
           <div class="col-4">
-            <button type="submit" onclick="login()" class="btn btn-primary btn-block">Sign In</button>
+            <button type="button" onclick="login()" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
@@ -87,25 +87,26 @@
 <script src="{{asset('cms/jss/crud.js')}}"></script>
 <script>
 
-  function login() {
-      var guard = '{{request('guard')}}';
-      axios.post('/cms/'+guard+'/login', {
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        guard: guard
-      })
-          .then(function (response) {
-          window.location.href = '/cms/product'
-      })
-          .catch(function (error) {
-              if (error.response.data.errors !== undefined) {
-                showErrorMessages(error.response.data.errors);
 
-              } else {
-                  showMessage(error.response.data);
-              }
-          });
-    }
+function login() {
+    var guard = '{{request('guard')}}';
+    axios.post('/cms/'+guard+'/login', {
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value,
+      guard: guard
+    })
+        .then(function (response) {
+        window.location.href = '/cms/product/parantt'
+    })
+        .catch(function (error) {
+            if (error.response.data.errors !== undefined) {
+              showErrorMessages(error.response.data.errors);
+
+            } else {
+                showMessage(error.response.data);
+            }
+        });
+  }
 
     </script>
 </body>
