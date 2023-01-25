@@ -1,12 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-<<<<<<< HEAD
 use App\Http\Controllers\AuthController;
-=======
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
->>>>>>> efe813d177035bc008aa2f01a85493e9575950ce
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserAuthConroller;
