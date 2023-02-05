@@ -30,7 +30,7 @@ Route::get('/', function () {
 });
 
 Route:Route::prefix('cms/')->middleware('guest:admin')->group(function () {
-    Route::get('{guard}/login' , [UserAuth\Controller::class , 'showlogin'])->name('view.login');
+    // Route::get('{guard}/login' , [UserAuth\Controller::class , 'showlogin'])->name('view.login');
     Route::get('{guard}/login' , [UserAuthConroller::class , 'showlogin'])->name('view.login');
     Route::post('{guard}/login' , [UserAuthConroller::class , 'login']);
  });
