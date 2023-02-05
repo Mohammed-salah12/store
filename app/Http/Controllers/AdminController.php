@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\City;
 use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,7 +19,7 @@ class AdminController extends Controller
     public function index()
     {
    $admins=Admin::orderBy('id','desc')->paginate(5);
-   return response()->view('cms.admin.index',compact('admins'));    }
+   return response()->view('cms.admins.index',compact('admins'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +29,7 @@ class AdminController extends Controller
     public function create()
     {
         $admins=Admin::all();
-        return response()->view('cms.admin.create',compact('admins'));
+        return response()->view('cms.admins.create',compact('admins'));
     }
 
     /**
@@ -40,35 +41,21 @@ class AdminController extends Controller
     public function store(Request $request)
     {
    $valedetor=validator(request()->all([
-    'email'=>'required|email'
+    'email'=>'required|email',
+    'img'=>'nullable'
+
    ]));
    if(! $valedetor->fails() ){
     $admins= new Admin();
-    if (request()->hasFile('img')) {
-
-        $img = $request ->file('img');
-
-        $imgName = time() . 'img.' . $img->getClientOriginalExtension();
-
-        $img->move('storage/images/admin', $imgName);
-
-        $admins->img = $imgName;
-    }
     $admins->email=$request->get('email');
     $admins->password=Hash::make($request->get('password'));
     $IsSaved=$admins->save();
-    if($IsSaved){
-        $users=new User();
-        $users->first_name=$request->get('first_name');
-        $users->last_name=$request->get('last_name');
-        $users->mobile=$request->get('mobile');
-        $users->actor()->associate($admins);
-
-        $IsSavedUser=$users->save();
-        return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
+    if ($IsSaved) {
+        return response()->json(['icon' => 'success', 'title' => "Created is successfully"], 200);
+    } else {
+        return response()->json(['icon' => 'Failed', 'title' => "Created is Failed", 'redirect' => route('comments.index')], 400);
     }
    }
-
 
     }
 
@@ -92,7 +79,7 @@ class AdminController extends Controller
     public function edit($id)
     {
       $admins=Admin::findOrFail($id);
-      return response()->view('cms.admin.edit',compact('admins'));
+      return response()->view('cms.admins.edit',compact('admins'));
     }
 
     /**

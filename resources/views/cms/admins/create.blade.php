@@ -30,19 +30,6 @@
               <div class="card-body">
 
 
-              <div class="row">
-
-                <div class="form-group col-md-6">
-                  <label for="first_name">First Name of Admin</label>
-                  <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name of Admin">
-                </div>
-
-                <div class="form-group col-md-6">
-                  <label for="last_name">Last Name of Admin</label>
-                  <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name of Admin">
-                </div>
-              </div>
-
                  <div class="row">
 
                 <div class="form-group col-md-6">
@@ -56,22 +43,7 @@
                 </div>
               </div>
 
-            <div class="row">
 
-                <div class="form-group col-md-6">
-                  <label for="mobile">Mobile of Admin</label>
-                  <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile of Admin">
-                </div>
-          </div>
-
-
-                 <div class="row">
-
-                  <div class="form-group col-md-12">
-                  <label for="img">Image of Admin</label>
-                  <input type="file" class="form-control" id="img" name="img" placeholder="Enter Date of Admin">
-                </div>
-                 </div>
 
               <!-- /.card-body -->
 
@@ -103,12 +75,8 @@
     function performStore(){
 
       let formData = new FormData();
-      formData.append('first_name',document.getElementById('first_name').value);
-      formData.append('last_name',document.getElementById('last_name').value);
       formData.append('email',document.getElementById('email').value);
       formData.append('password',document.getElementById('password').value);
-      formData.append('mobile',document.getElementById('mobile').value);
-      formData.append('img',document.getElementById('img').files[0]);
 
 
       store('/cms/product/admins' , formData);

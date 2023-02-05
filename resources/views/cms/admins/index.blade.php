@@ -60,11 +60,7 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>first Name</th>
-                      <th>last Name</th>
                       <th>Email</th>
-                      <th>img</th>
-                      <th>Mobile</th>
                       <th>Seeting</th>
                     </tr>
                   </thead>
@@ -73,13 +69,8 @@
                     <tr>
                         <td>{{$admin->id}}</td>
 
-                        <td>{{$admin->user->first_name ?? ""}}</td>
-                        <td>{{$admin->user->last_name ?? ""}}</td>
                         <td>{{$admin->email ?? ""}}</td>
-                        <td>
-                            <img class="img-circle img-bordered-sm" src="{{asset('storage/images/admin/'.$admin->img ?? "")}}" width="60" height="60" alt="User img">
-                         </td>
-                        <td>{{$admin->user->mobile ?? ""}}</td>
+
                         <td>
                             <div class="btn group">
                               <a href="{{route('admins.edit' , $admin->id)}}" type="button" class="btn btn-info">

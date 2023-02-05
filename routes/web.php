@@ -1,10 +1,12 @@
 <?php
+use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserAuthConroller;
 use App\Http\Controllers\UserAuthController;
@@ -28,7 +30,7 @@ Route::get('/', function () {
 });
 
 Route:Route::prefix('cms/')->middleware('guest:admin')->group(function () {
-    // Route::get('{guard}/login' , [UserAuth\Controller::class , 'showlogin'])->name('view.login');
+    Route::get('{guard}/login' , [UserAuth\Controller::class , 'showlogin'])->name('view.login');
     Route::get('{guard}/login' , [UserAuthConroller::class , 'showlogin'])->name('view.login');
     Route::post('{guard}/login' , [UserAuthConroller::class , 'login']);
  });
@@ -39,7 +41,7 @@ Route:Route::prefix('cms/')->middleware('guest:admin')->group(function () {
 });
 
 
-Route::prefix('/cms/product/')->middleware('auth:admin')->group(function () {
+Route::prefix('/cms/product/')->group(function () {
     Route::view('parantt','cms.parent');
     Route::resource('products' , ProductController::class);
     Route::post('update-products/{id}' , [ProductController::class , 'update'])->name('update-products');
@@ -63,3 +65,12 @@ Route::prefix('/cms/product/')->middleware('auth:admin')->group(function () {
 
 });
 
+Route::prefix('front/')->group(function(){
+    Route::post('Home' , [HomeController::class , 'Home']);
+
+});
+
+Route::view('pearant','contacts.pearant');
+Route::resource('contacts' , ContactController::class);
+Route::view('home','contacts.home')->name('store.home');
+Route::resource('comments' , CommentController::class);
