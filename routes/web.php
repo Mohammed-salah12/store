@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -41,7 +42,7 @@ Route:Route::prefix('cms/')->middleware('guest:admin')->group(function () {
 });
 
 
-Route::prefix('/cms/product/')->group(function () {
+Route::prefix('/cms/product/')->middleware('auth:admin')->group(function () {
     Route::view('parantt','cms.parent');
     Route::resource('products' , ProductController::class);
     Route::post('update-products/{id}' , [ProductController::class , 'update'])->name('update-products');
@@ -61,6 +62,9 @@ Route::prefix('/cms/product/')->group(function () {
 
     Route::resource('comments' , CommentController::class);
     Route::post('update-comments/{id}' , [CommentController::class , 'update'])->name('update-comments');
+
+    Route::resource('companies' , CompanyController::class);
+    Route::post('update-companies/{id}' , [CompanyController::class , 'update'])->name('update-companies');
 
 
 });

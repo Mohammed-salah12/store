@@ -1,4 +1,3 @@
-$comments=Commet::take(3)->get();
  @extends('contacts.pearant')
 @section('content')
     <header>
@@ -244,7 +243,7 @@ $comments=Commet::take(3)->get();
     </div>
     <!-- Start Testimonials -->
 
-    @foreach ($comments as $comment)
+    {{--  @foreach ($comments as $comment)
 
     <div class="testimonials">
          <h1>testimonials</h1>
@@ -261,14 +260,14 @@ $comments=Commet::take(3)->get();
             </div>
 
     </div>
-    @endforeach
+    @endforeach  --}}
 
     <!-- Start Brand -->
     <div class="brand">
         <img src="{{ asset('store/images/brand1.png') }}">
         <img src="{{ asset('store/images/brand2.png') }}">
-        <img src="{{ asset('store/images/brand3.png') }}set}}">
-        <img src="{{ asset('store/images/brand4.png') }}set}}">
-        <img src="{{ asset('store/images/brand5.png') }}set}}">
+        <img src="{{ asset('store/images/brand3.png') }}">
+        <img src="{{ asset('store/images/brand4.png') }}">
+        <img src="{{ asset('store/images/brand5.png') }}">
     </div>
 @endsection
