@@ -19,7 +19,8 @@ class AdminController extends Controller
     public function index()
     {
    $admins=Admin::orderBy('id','desc')->paginate(5);
-   return response()->view('cms.admins.index',compact('admins'));    }
+   return response()->view('cms.admins.index',compact('admins'));
+ }
 
     /**
      * Show the form for creating a new resource.
@@ -130,6 +131,32 @@ class AdminController extends Controller
     {
         $admins = Admin::destroy($id);
       }
+
+      public function showRegester(){
+        $admins=Admin::all();
+        return response()->view('cms.regester',compact('admins'));
+      }
+      public function regester(Request $request)
+      {
+     $valedetor=validator(request()->all([
+      'email'=>'required|email',
+      'password'=>'required|password',
+
+     ]));
+     if(! $valedetor->fails() ){
+      $admins= new Admin();
+      $admins->email=$request->get('email');
+      $admins->password=Hash::make($request->get('password'));
+      $IsSaved=$admins->save();
+      if ($IsSaved) {
+          return response()->json(['icon' => 'success', 'title' => "Created is successfully"], 200);
+      } else {
+          return response()->json(['icon' => 'Failed', 'title' => "Created is Failed", 400]);
+      }
+     }
+
+      }
+
 }
 
 

@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ asset('cms/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('cms/plugins/summernote/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/public/cms/plugins/bootstarpCss/bootstrap.min.css') }}">
 
     {{-- <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css"> --}}
 
@@ -50,6 +51,7 @@
             <li><a href="{{ route('contacts.create') }}">contact</a></li>
             <li><a href="{{ route('comments.create') }}">Customer opinions</a></li>
             <div class="close"><i class="fas fa-times"></i></div>
+
         </ul>
     </nav>
 @yield('content')
@@ -88,7 +90,7 @@
             </div>
         </div>
         <div class="copy">
-            All Rights Reserved © 2022 
+            All Rights Reserved © 2022
 
         </div>
     </footer>
@@ -101,7 +103,8 @@
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="{{asset('cms/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('cms/plugins/bootstrap/js/bootstrap5.bundle.min.js')}}"></script>
+
 <!-- ChartJS -->
 <script src="{{asset('cms/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->

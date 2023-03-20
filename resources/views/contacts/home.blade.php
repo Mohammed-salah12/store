@@ -1,4 +1,4 @@
- @extends('contacts.pearant')
+@extends('contacts.pearant')
 @section('content')
     <header>
 
@@ -16,41 +16,33 @@
     <!-- Start Features -->
     <div class="features">
         <h1>our products</h1>
-        <div class="row">
-            <div class="features_box">
-                <div class="products_box">
-                    <img src="{{ asset('store/images/product1.png') }}">
-                    <div class="info">
-                        <a href="#">add to char <i class="far fa-shopping-cart"></i></a>
-                    </div>
+
+        @foreach ($products as $produt )
+
+
+
+        <dxxxiv class="features_box">
+            <div class="products_box">
+                <img class="img-circle img-bordered-sm" src="{{asset('storage/images/products/'.$produt->img)}}" width="60" height="60" alt="User Image">
+
+                <div class="info">
+                    <a href="#">add to char <i class="far fa-shopping-cart"></i></a>
                 </div>
-                <h3>pajamas</h3>
-                <div class="rate">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <p><sup>$</sup>40.00</p>
             </div>
-            <div class="features_box">
-                <div class="products_box">
-                    <img src="{{ asset('store/images/product2.png') }}">
-                    <div class="info">
-                        <a href="#">add to char <i class="far fa-shopping-cart"></i></a>
-                    </div>
-                </div>
-                <h3>rolex watch</h3>
-                <div class="rate">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <p><sup>$</sup>250.00</p>
+            <h3>{{$produt->name_product}}</h3>
+            <div class="rate">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
             </div>
+            <p><sup>$</sup>{{ $produt->price_product }}</p>
+
+        </dxxxiv>
+            @endforeach
+
+
             <div class="features_box">
                 <div class="products_box">
                     <img src="{{ asset('store/images/product3.png') }}">
@@ -243,7 +235,7 @@
     </div>
     <!-- Start Testimonials -->
 
-    {{--  @foreach ($comments as $comment)
+   @foreach ($comments as $comment)
 
     <div class="testimonials">
          <h1>testimonials</h1>
@@ -260,14 +252,15 @@
             </div>
 
     </div>
-    @endforeach  --}}
+    @endforeach
 
     <!-- Start Brand -->
+
+    @foreach ($companies as $company )
+
     <div class="brand">
-        <img src="{{ asset('store/images/brand1.png') }}">
-        <img src="{{ asset('store/images/brand2.png') }}">
-        <img src="{{ asset('store/images/brand3.png') }}">
-        <img src="{{ asset('store/images/brand4.png') }}">
-        <img src="{{ asset('store/images/brand5.png') }}">
+        <img class="img-circle img-bordered-sm" src="{{asset('storage/images/companies/'.$company->img)}}" width="60" height="60" alt="User img">
     </div>
+    @endforeach
 @endsection
+

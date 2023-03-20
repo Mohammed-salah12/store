@@ -42,7 +42,13 @@ Route:Route::prefix('cms/')->middleware('guest:admin')->group(function () {
 });
 
 
-Route::prefix('/cms/product/')->middleware('auth:admin')->group(function () {
+Route::prefix('cms/regester')->group(function () {
+    Route::post('regesterr' , [AdminController::class , 'regester'])->name('Admin.regester');
+    Route::get('showregesterr' , [AdminController::class , 'showregester'])->name('Admin.showregester');
+
+ });
+
+Route::prefix('/cms/product/')->group(function () {
     Route::view('parantt','cms.parent');
     Route::resource('products' , ProductController::class);
     Route::post('update-products/{id}' , [ProductController::class , 'update'])->name('update-products');
@@ -70,11 +76,11 @@ Route::prefix('/cms/product/')->middleware('auth:admin')->group(function () {
 });
 
 Route::prefix('front/')->group(function(){
-    Route::post('Home' , [HomeController::class , 'Home']);
+    Route::get('Homee' , [HomeController::class , 'Home']);
 
 });
 
 Route::view('pearant','contacts.pearant');
 Route::resource('contacts' , ContactController::class);
-Route::view('home','contacts.home')->name('store.home');
+Route::get('home' , [HomeController::class , 'Home'])->name('store.home');;
 Route::resource('comments' , CommentController::class);
