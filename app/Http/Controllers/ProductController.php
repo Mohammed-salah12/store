@@ -41,7 +41,6 @@ class ProductController extends Controller
    ]));
     if(! $valedetor->fails() ){
         $products= new Product();
-        // $products->img=$request->get('img');
         $products->name_product=  $request->get('name_product');
         $products->price_product= $request->get('price_product');
         if (request()->hasFile('img')) {
@@ -62,7 +61,6 @@ class ProductController extends Controller
             return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
         }
 
-        return ['redirect' => route('products.index')];
 
 
    }

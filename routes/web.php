@@ -1,7 +1,8 @@
 <?php
 use App\Http\Controllers\UserController;
-
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\API\AdminController as APIAdminController;
+use App\Http\Controllers\API\CategoryController as APICategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
@@ -30,7 +31,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route:Route::prefix('cms/')->middleware('guest:admin')->group(function () {
+Route::prefix('cms/')->middleware('guest:admin')->group(function () {
     // Route::get('{guard}/login' , [UserAuth\Controller::class , 'showlogin'])->name('view.login');
     Route::get('{guard}/login' , [UserAuthConroller::class , 'showlogin'])->name('view.login');
     Route::post('{guard}/login' , [UserAuthConroller::class , 'login']);
@@ -48,7 +49,7 @@ Route::prefix('cms/regester')->group(function () {
 
  });
 
-Route::prefix('/cms/product/')->group(function () {
+    Route::prefix('/cms/product/')->group(function () {
     Route::view('parantt','cms.parent');
     Route::resource('products' , ProductController::class);
     Route::post('update-products/{id}' , [ProductController::class , 'update'])->name('update-products');
@@ -84,3 +85,6 @@ Route::view('pearant','contacts.pearant');
 Route::resource('contacts' , ContactController::class);
 Route::get('home' , [HomeController::class , 'Home'])->name('store.home');;
 Route::resource('comments' , CommentController::class);
+
+Route::apiResource('admins' , APIAdminController::class) ;
+Route::apiResource('categories' , APICategoryController::class) ;
